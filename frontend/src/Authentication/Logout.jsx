@@ -4,7 +4,7 @@ import axios from 'axios';
 const Logout = ({onLogout}) => {
     const handleLogout = async () => {
         try{
-            const response = await axios.get('http://localhost:3000/api/auth/logout');
+            const response = await axios.get('http://localhost:3000/api/auth/logout' , {withCredentials : true});   
             alert(response.data.message);
             onLogout();
 

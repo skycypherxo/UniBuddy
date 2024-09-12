@@ -1,12 +1,26 @@
+//IMPORTS
+
+
+//congif imports
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const body_parser = require('body-parser');
 const cookie_parser = require('cookie-parser');
-const authRoutes = require('./routes/authRoutes');
 const app = express();
+
+//routes imports
+const authRoutes = require('./routes/authRoutes');
+const dashBoardRoutes = require('./routes/dashboardRoutes');
+
 const session = require('express-session');
 const PORT = 3000;
+
+
+
+// END OF IMPORTS 
+
+
 
 // config
 app.use(cors({
@@ -33,6 +47,7 @@ mongoose.connect('mongodb://127.0.0.1:27017/UniBuddy').then(() => {
 
 //routes
 app.use('/api/auth', authRoutes);
+app.use('/api/dashboard', dashBoardRoutes);
 
 //start
 app.listen(PORT, () => {

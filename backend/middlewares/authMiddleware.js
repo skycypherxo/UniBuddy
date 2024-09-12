@@ -1,7 +1,10 @@
 
 const jwt = require('jsonwebtoken');
+const User = require('../models/userModel');
+
+
 require('dotenv').config({ path: ".env" });
-console.log(process.env.JWT_SECRET);
+//console.log(process.env.JWT_SECRET);
 
 const authenticate = (req, res, next) => {
   console.log("authMiddleware req.cookies: ", req.cookies);

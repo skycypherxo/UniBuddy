@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import "./Login.css";
 import axios from 'axios';
-
+import {useNavigate} from 'react-router-dom';
 const Login = ({ onLogin }) => {
     const [formValues, setFormValues] = useState({ email: '', password: '' });
+    const navigate = useNavigate();
 
     const handleChange = (e) => {
         setFormValues({
@@ -16,9 +17,12 @@ const Login = ({ onLogin }) => {
         e.preventDefault();
         try {
             console.log(formValues);
-            const response = await axios.post('http://localhost:3000/api/auth/login', formValues);
+            const response = await axios.post('http://localhost:3000/api/auth/login', formValues , {withCredentials : true});
             alert(response.data.message);
             onLogin(response.data.token);
+            if(response.data.token){
+                navigate('/');
+            }
         }
         catch (err) {
             console.error("Error in handleSubmit in Login: ", err);

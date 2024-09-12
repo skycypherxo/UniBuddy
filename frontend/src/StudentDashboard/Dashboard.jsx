@@ -1,7 +1,24 @@
-import React from 'react';
+import React, {useState , useEffect} from 'react';
 import './Dashboard.css';
+import axios from 'axios';
 
 const Dashboard = () => {
+  const [dashboardData , setDashboardData] = useState(null);
+
+  useEffect(() => {
+    const fetchDashboardData = async () => {
+      try {
+        const response = await axios.get('http://localhost:3000/api/dashboard/dashboard', { withCredentials: true });
+        console.log(response.data);
+        setDashboardData(response.data);
+      } catch (error) {
+        console.error('Error fetching dashboard data:', error);
+      }
+    };
+
+    fetchDashboardData();
+  }, []);
+
   return (
    
       <div className="dashboard-dashboard">
@@ -9,12 +26,12 @@ const Dashboard = () => {
           <div className="dashboard-profile-section">
             <img src="profile-picture.jpg" alt="Profile" className="dashboard-profile-pic" />
             <div className="dashboard-profile-info">
-              <h2>Hey, Alex</h2>
-              <p>12102030</p>
+              <h2>Hey</h2>
+              <p>1243332</p>
             </div>
           </div>
           <div className="dashboard-info">
-            <p><strong>Course:</strong> BTech. Computer Science & Engineering</p>
+            <p><strong>Course:</strong> BTech Comp Sci</p>
             <p><strong>DOB:</strong> 29-Feb-2020</p>
             <p><strong>Contact:</strong> 1234567890</p>
             <p><strong>Email:</strong> unknown@gmail.com</p>

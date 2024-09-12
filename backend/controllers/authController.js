@@ -1,17 +1,18 @@
 const express = require('express');
 const brcypt = require('bcryptjs');
-const session = require('express-session');
 const jwt = require('jsonwebtoken');
 const User = require('../models/userModel');
 require('dotenv').config({path: '.env'});
-app = express();
+const fs = require('fs');
+const path = require('path');
 
 const login = async (req, res) => {
     try{
-        console.log(req);
+        console.log(req.user);
         const { email, password } = req.body;
         const user = await User.findOne({email});
-
+        //console.log(req.user.id);
+        
         if(!user){
             console.log("No user found");
             return res.status(401).json({message : "User Not found"});
@@ -28,8 +29,12 @@ const login = async (req, res) => {
         console.log( "Token ", token);
         res.cookie('token', token , {httpOnly : true  , secure : process.env.NODE_ENV === 'production'});
         req.session.token = token;
-        res.status(200).json({message : "User logged in"});
-        console.log("user logged in");
+
+        const profilePicUrl = user.profilePic ? `/uploads/profilePictures/${user.profilePic}` : null;
+
+        console.log(user.profilePic, password , user.password , email);
+        res.status(200).json({message : "User logged in" , token , profilePicture : user.profilePic});
+        console.log("Cookie set: ", res.get('Set-Cookie'));
     }
     catch(err){
         console.error("Error in login : ", err);
@@ -54,10 +59,19 @@ const signup = async(req, res) => {
         }
 
         const hashedPassword = await brcypt.hash(password, 10);
+        const profilePic = req.file ? `${email}-${Date.now()}${path.extname(req.file.originalname)}` : null;
+        let profilePicHash = null;
+
+
+        if (req.file) {
+            const filePath = path.join(__dirname, '../uploads/profilePictures', profilePic);
+            fs.renameSync(req.file.path, filePath);
+        }
 
         const newUser = new User({
             email , 
-            password : hashedPassword
+            password : hashedPassword,
+            profilePic
         });
 
         await newUser.save();
@@ -72,19 +86,24 @@ const signup = async(req, res) => {
 };
 
 const logout = async (req, res) => {
-    if(!req.cookies.token){
-        console.log("NO user logged in");
-        res.status(200).json({message : "No user logged in "});
+    //console.log("req.cookies:", req.cookies);
+    console.log("req.cookies.token", req.cookies.token);
+
+    if (!req.cookies.token) {
+        console.log("No user logged in");
+        return res.status(200).json({ message: "No user logged in" });
     }
+
     res.clearCookie('token');
     req.session.destroy(err => {
-        if(err){
-            console.error("Error during session destruction : ", err);
-            return res.status(400).json({message : "error during session destruction"});
+        if (err) {
+            console.error("Error during session destruction:", err);
+            return res.status(400).json({ message: "Error during session destruction" });
         }
         console.log("Logged out successfully");
-        return res.status(200).json({message : "User logged out successfuly"});
+        return res.status(200).json({ message: "User logged out successfully" });
     });
 };
+
 
 module.exports = {login, signup , logout};
