@@ -1,6 +1,4 @@
 //IMPORTS
-
-
 //congif imports
 const express = require('express');
 const mongoose = require('mongoose');
@@ -8,20 +6,35 @@ const cors = require('cors');
 const body_parser = require('body-parser');
 const cookie_parser = require('cookie-parser');
 const app = express();
-
-//routes imports
-const authRoutes = require('./routes/authRoutes');
-const dashBoardRoutes = require('./routes/dashboardRoutes');
-
 const session = require('express-session');
 const PORT = 3000;
 
 
 
+
+
+
+//--------------------ROUTES IMPORTS -----------------------------
+//ash imports
+const authRoutes = require('./routes/authRoutes');
+const dashBoardRoutes = require('./routes/dashboardRoutes');
+
+
+
+
+
+
+
+//shwets imports 
+
+
+
+
+
+
+
+
 // END OF IMPORTS 
-
-
-
 // config
 app.use(cors({
     origin: 'http://localhost:5173',
@@ -38,16 +51,43 @@ app.use(session({
     cookie : {secure : false} //true while deployingggggg
 }));
 
-//db
+
+
+
+
+//db connection
 mongoose.connect('mongodb://127.0.0.1:27017/UniBuddy').then(() => {
     console.log("Mongo connected!");
 }).catch((err) => {
     console.error("Error", err);
 });
 
-//routes
+
+
+// ash routes
 app.use('/api/auth', authRoutes);
 app.use('/api/dashboard', dashBoardRoutes);
+
+
+
+
+
+
+
+
+
+
+//shwets routes 
+
+
+
+
+
+
+
+
+
+
 
 //start
 app.listen(PORT, () => {

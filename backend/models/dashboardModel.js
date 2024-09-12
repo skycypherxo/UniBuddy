@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const dashBoardSchema = new mongoose.Schema({
-    userId : {type : mongoose.Schema.Types.ObjectId , ref: 'User', required : true},
+    userId : {type : String , required : true},
     course : {type : String , required : true},
     dob : {type : Date , required : true},
     contact : {type : Number , required : true},
@@ -10,8 +10,8 @@ const dashBoardSchema = new mongoose.Schema({
     attendance : [
         {
             subject : {type : String , required : true},
-            totalClasses : {type : String , required : true},
-            attendedClasses : {type : String , required : true},
+            totalClasses : {type : Number , required : true},
+            attendedClasses : {type : Number , required : true},
             percentage : {type : Number , required : true},
             last24Hours : {type : String , required : true}
         }

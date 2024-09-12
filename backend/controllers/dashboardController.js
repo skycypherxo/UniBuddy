@@ -3,11 +3,11 @@ const DashBoard = require('../models/dashboardModel');
 const getDashBoardData = async (req, res) => {
     try{
         console.log("Inside Dashboard controller");
+        console.log(req.user.id);
         const userId = req.user.id;
-        const email = req.body.email;
-        console.log(email, userId);
+        console.log(userId);
         const dashBoardData = await DashBoard.findOne({userId});
-        console.log(dashBoardData);
+        //console.log(dashBoardData); - working
 
         if(!dashBoardData){
             console.log("NO dashboard data");

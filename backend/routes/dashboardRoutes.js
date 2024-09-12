@@ -4,6 +4,6 @@ const authenticate = require('../middlewares/authMiddleware');
 
 const router = express.Router();
 
-router.get('/dashboard', authenticate , getDashBoardData);
+router.get('/info', authenticate , getDashBoardData);
 
 module.exports = router;

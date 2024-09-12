@@ -32,9 +32,9 @@ const login = async (req, res) => {
 
         const profilePicUrl = user.profilePic ? `/uploads/profilePictures/${user.profilePic}` : null;
 
-        console.log(user.profilePic, password , user.password , email);
+        //`console.log(user.profilePic, password , user.password , email);
         res.status(200).json({message : "User logged in" , token , profilePicture : user.profilePic});
-        console.log("Cookie set: ", res.get('Set-Cookie'));
+        //console.log("Cookie set: ", res.get('Set-Cookie'));
     }
     catch(err){
         console.error("Error in login : ", err);
