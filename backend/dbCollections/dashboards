@@ -1,0 +1,113 @@
+
+{
+  "userId": "66e33b0ae884ec08a30f9592",
+  "course": "BTech. Computer Science & Engineering",
+  "dob": "29-Feb-2020",
+  "contact": "1234567890",
+  "email": "unknown@gmail.com",
+  "address": "Ghost town Road, New York, America",
+  "attendance": [
+    {
+      "subject": "Engineering Graphics",
+      "totalClasses": 14,
+      "attendedClasses": 1,
+      "lastUpdated": "Last 24 Hours",
+      "history": [
+        {
+          "date": "2024-09-01",
+          "attendedClasses": 10,
+          "totalClasses": 12
+        },
+        {
+          "date": "2024-09-08",
+          "attendedClasses": 12,
+          "totalClasses": 14
+        }
+      ]
+    },
+    {
+      "subject": "Mathematical Engineering",
+      "totalClasses": 29,
+      "attendedClasses": 27,
+      "lastUpdated": "Last 24 Hours",
+      "history": [
+        {
+          "date": "2024-08-30",
+          "attendedClasses": 25,
+          "totalClasses": 27
+        },
+        {
+          "date": "2024-09-08",
+          "attendedClasses": 27,
+          "totalClasses": 29
+        }
+      ]
+    },
+    {
+      "subject": "Computer Architecture",
+      "totalClasses": 30,
+      "attendedClasses": 27,
+      "lastUpdated": "Last 24 Hours"
+    },
+    {
+      "subject": "Database Management",
+      "totalClasses": 25,
+      "attendedClasses": 24,
+      "lastUpdated": "Last 24 Hours"
+    },
+    {
+      "subject": "Network Security",
+      "totalClasses": 27,
+      "attendedClasses": 25,
+      "lastUpdated": "Last 24 Hours"
+    }
+  ],
+  "timetable": [
+    {
+      "time": "10-11 AM",
+      "roomNo": "33-309",
+      "subject": "DBMS130"
+    },
+    {
+      "time": "11-12 AM",
+      "roomNo": "38-719",
+      "subject": "CS200"
+    },
+    {
+      "time": "01-02 PM",
+      "roomNo": "33-309",
+      "subject": "MTH166"
+    }
+  ],
+  "announcements": [
+    {
+      "category": "Academic",
+      "message": "Summer training internship with Live Projects.",
+      "timeAgo": "2 Minutes Ago"
+    },
+    {
+      "category": "Co-curricular",
+      "message": "Global internship opportunity by Student organization.",
+      "timeAgo": "10 Minutes Ago"
+    },
+    {
+      "category": "Examination",
+      "message": "Instructions for Mid Term Examination.",
+      "timeAgo": "Yesterday"
+    }
+  ],
+  "teachersOnLeave": [
+    {
+      "teacherName": "The Professor",
+      "leaveDuration": "Full Day"
+    },
+    {
+      "teacherName": "Lisa Manobal",
+      "leaveDuration": "Half Day"
+    },
+    {
+      "teacherName": "Himanshu Jindal",
+      "leaveDuration": "Full Day"
+    }
+  ]
+}
