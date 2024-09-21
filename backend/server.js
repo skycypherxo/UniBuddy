@@ -18,7 +18,7 @@ const PORT = 3000;
 //ash imports
 const authRoutes = require('./routes/authRoutes');
 const dashBoardRoutes = require('./routes/dashboardRoutes');
-
+const eventRoutes = require('./routes/eventRoutes');
 
 
 
@@ -67,7 +67,7 @@ mongoose.connect('mongodb://127.0.0.1:27017/UniBuddy').then(() => {
 // ash routes
 app.use('/api/auth', authRoutes);
 app.use('/api/dashboard', dashBoardRoutes);
-
+app.use('/api/events', eventRoutes);
 
 
 

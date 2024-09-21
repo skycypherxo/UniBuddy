@@ -14,12 +14,13 @@ const authenticate = (req, res, next) => {
   if (!token) {
     console.log("No token provided");
     req.user = null;
-    return next(); // Allow unauthenticated requests
+    return next();
   }
   
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     req.user = decoded;
+    console.log(req.user);
     next();
   } catch (err) {
     return res.status(401).json({ message: 'Unauthorized' });

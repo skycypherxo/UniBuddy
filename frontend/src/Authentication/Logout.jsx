@@ -7,7 +7,6 @@ const Logout = ({onLogout}) => {
             const response = await axios.get('http://localhost:3000/api/auth/logout' , {withCredentials : true});   
             alert(response.data.message);
             onLogout();
-
         }
         catch(err){
             console.error("Error in logout : ", err);

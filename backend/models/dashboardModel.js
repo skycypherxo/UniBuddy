@@ -20,7 +20,7 @@ const dashBoardSchema = new mongoose.Schema({
     timetable : [
     {
         time : {type : String , required : true},
-        roomNo : {type : Number , required : true },
+        roomNo : {type : String , required : true },
         subject : {type : String , required : true}
     }
     ],
