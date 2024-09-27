@@ -19,7 +19,7 @@ const PORT = 3000;
 const authRoutes = require('./routes/authRoutes');
 const dashBoardRoutes = require('./routes/dashboardRoutes');
 const eventRoutes = require('./routes/eventRoutes');
-
+const productRoutes = require('./routes/productRoutes');
 
 
 
@@ -48,7 +48,7 @@ app.use(session({
     secret: process.env.SESSION_SECRET,
     resave : false,
     saveUninitialized : true,
-    cookie : {secure : false} //true while deployingggggg
+    cookie : {secure : true} //true while deployingggggg
 }));
 
 
@@ -57,7 +57,7 @@ app.use(session({
 
 //db connection
 mongoose.connect('mongodb://127.0.0.1:27017/UniBuddy').then(() => {
-    console.log("Mongo connected!");
+    console.log("Mongo connected to UniBuddy!");
 }).catch((err) => {
     console.error("Error", err);
 });
@@ -68,7 +68,7 @@ mongoose.connect('mongodb://127.0.0.1:27017/UniBuddy').then(() => {
 app.use('/api/auth', authRoutes);
 app.use('/api/dashboard', dashBoardRoutes);
 app.use('/api/events', eventRoutes);
-
+app.use('/api/products', productRoutes);
 
 
 

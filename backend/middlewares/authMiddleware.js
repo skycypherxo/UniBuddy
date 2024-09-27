@@ -8,6 +8,7 @@ require('dotenv').config({ path: ".env" });
 
 const authenticate = (req, res, next) => {
   console.log("authMiddleware req.cookies: ", req.cookies);
+  console.log("authMiddleware req.headers.authorization: ", req.headers.authorization);
   const token = req.cookies.token;
   console.log("Authenticate Middleware token: ", token);
   
@@ -20,7 +21,7 @@ const authenticate = (req, res, next) => {
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     req.user = decoded;
-    console.log(req.user);
+    console.log("req.user" , req.user);
     next();
   } catch (err) {
     return res.status(401).json({ message: 'Unauthorized' });
@@ -28,3 +29,5 @@ const authenticate = (req, res, next) => {
 };
 
 module.exports = authenticate;
+
+
