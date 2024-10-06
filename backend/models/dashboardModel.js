@@ -13,7 +13,7 @@ const dashBoardSchema = new mongoose.Schema({
             totalClasses : {type : Number , required : true},
             attendedClasses : {type : Number , required : true},
             percentage : {type : Number , required : true},
-            last24Hours : {type : String , required : true}
+            lastUpdated : {type : String , required : true} // Changed from last24Hours to lastUpdated
         }
     ],
 
@@ -29,14 +29,14 @@ const dashBoardSchema = new mongoose.Schema({
         {
             category : {type : String , required : true},
             message : {type : String , required : true},
-            time : {type : String , required : true}
+            time : {type : String , required : true} 
         }
     ],
 
     teachersOnLeave : [
         {
-            name : {type : String , required : true},
-            leaveType : {type : String , required : true}
+            name : {type : String , required : true}, 
+            leaveType : {type : String , required : true} // Changed from leaveDuration to leaveType
         }
     ]
 }, {timestamps : true});

@@ -24,7 +24,7 @@ const Login = ({ onLogin }) => {
             alert(response.data.message);
             onLogin(response.data.token);
             const token = localStorage.setItem('token', response.data.token);
-            if(response.data.token){
+            if(token){
                 navigate('/');
             }
         }

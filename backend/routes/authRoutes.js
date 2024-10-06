@@ -12,7 +12,6 @@ router.get('/logout', logout);
 
 router.get('/protected', (req, res) => {
     res.status(200).json({ message: "You are authenticated" });
-    console.log("Inside protected");
 });
 
 router.get('/profile', async (req, res) => {

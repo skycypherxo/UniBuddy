@@ -51,17 +51,20 @@ import HomePage from "./HomePage/HomePage";
 
 //ash imports if any
 import Logout from "./Authentication/Logout";
-
-
-
-
-
+import RoomJoin from "./WhiteBoard/RoomJoin";
+import RoomPage from "./WhiteBoard/RoomPage";
+import CodeEditor from './Code/CodeEditor';
+import ResumeForm from './Resume/ResumeForm';
+import ResumePreview from './Resume/ResumePreview';
+import Chatbot from './Chatbot/Chatbot';
 
 
 
 
 const App = () => {
   const [isAuthenticated, setisAuthenticated] = useState(false);
+  const [roomId, setRoomId] = useState(null);
+  const [resumeData, setResumeData] = useState(null);
 
   useEffect(() => {
     const checkAuth = async () => {
@@ -90,6 +93,12 @@ const App = () => {
     setisAuthenticated(false);
   };
 
+  const handleRoomJoin = (roomId) => {
+    setRoomId(roomId); 
+  };
+  const handleResumeSubmit = (data) => {
+    setResumeData(data);
+  };
 
 
   return (
@@ -130,6 +139,33 @@ const App = () => {
 
           {/* <SHEWTA KE ROUTES /> */}
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          {/* Ashmit  */}
+          <Route path="/roomjoin" element={<RoomJoin />} />
+          <Route path="/room/:roomId" element={<RoomPage />} />
+          <Route path="/chatbot" element={<Chatbot />} />
+          <Route path="/code" element={<CodeEditor />} />
+          <Route path="/resume" element={
+            <>
+              <ResumeForm onSubmit={handleResumeSubmit} />
+              {resumeData && <ResumePreview data={resumeData} />}
+            </>
+          } />
 
 
 
